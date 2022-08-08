@@ -1,0 +1,19 @@
+[user]
+	name = mari__
+	email = bowman.marius@gmail.com
+[core]
+	editor = vim
+[merge]
+	tool = kdiff3
+[mergetool]
+	prompt = false
+[diff]
+	tool = kdiff3
+[difftool]
+	prompt = false
+[init]
+	defaultBranch = main
+[url "ssh://git@github.com/"]
+	insteadOf = https://github.com/
+[credential]
+	helper = netrc

@@ -1,5 +1,4 @@
-apt install zsh
-apt install git-core
+sudo apt update && sudo apt install -y zsh git-core
 
 # download binaries
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh

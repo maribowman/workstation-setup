@@ -1,3 +1,4 @@
+#!/bin/bash
 curl -OL https://go.dev/dl/go1.19.linux-amd64.tar.gz
 
 # remove old go installation and install new tar

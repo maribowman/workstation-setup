@@ -1,3 +1,4 @@
+#!/bin/bash
 # https://www.resilio.com/blog/official-linux-packages-for-sync-now-available
 
 deb http://linux-packages.resilio.com/resilio-sync/deb resilio-sync non-free

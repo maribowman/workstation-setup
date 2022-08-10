@@ -7,5 +7,5 @@ apt-cache policy docker-ce
 sudo apt update && sudo apt install -y docker-ce
 
 # execute docker without sudo
-sudo usermod -aG docker $(USER)
-su - $(USER)
+sudo usermod -aG docker "$USER"
+su - "$USER"

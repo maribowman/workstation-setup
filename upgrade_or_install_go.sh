@@ -6,7 +6,7 @@ DOWNLOADS="$HOME/Downloads/"
 
 if [ -d "/usr/local/go" ]; then
   ## remove old go installation
-  rm -rf /usr/local/go
+  sudo rm -rf /usr/local/go
 else
   {
     echo -e "\n# export go system settings"
@@ -18,4 +18,4 @@ else
 fi
 
 # download and install new version
-(cd "$DOWNLOADS" && curl -OL $URL) && tar -C /usr/local -xzf "$DOWNLOADS$FILENAME"
+(cd "$DOWNLOADS" && curl -OL $URL) && sudo tar -C /usr/local -xzf "$DOWNLOADS$FILENAME"

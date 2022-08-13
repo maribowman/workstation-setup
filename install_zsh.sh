@@ -3,9 +3,7 @@
 wget https://github.com/robbyrussell/oh-my-zsh/raw/master/tools/install.sh -O - | zsh
 
 # change default shell
-chsh -s `which zsh`
-
-# copy and replace config
+chsh -s "$(which zsh)"
 cp ./dotfiles/.zshrc "$HOME/"
 
 # restart

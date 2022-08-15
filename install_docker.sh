@@ -9,3 +9,9 @@ sudo apt update && sudo apt install -y docker-ce
 sudo usermod -aG docker "$USER"
 su - "$USER"
 
+# install docker compose
+mkdir -p ~/.docker/cli-plugins/
+curl -SL https://github.com/docker/compose/releases/download/v2.3.3/docker-compose-linux-x86_64 -o ~/.docker/cli-plugins/docker-compose
+
+chmod +x ~/.docker/cli-plugins/docker-compose
+docker compose version

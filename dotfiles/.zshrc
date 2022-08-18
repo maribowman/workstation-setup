@@ -26,5 +26,5 @@ plugins=(git docker docker-compose kubectl helm golang sudo)
 
 # Enable it
 source $ZSH/oh-my-zsh.sh
-source <(completion zsh)
-
+source ~/.profile
+# source <(completion zsh

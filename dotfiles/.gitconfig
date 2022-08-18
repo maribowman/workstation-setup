@@ -17,3 +17,5 @@
 	insteadOf = https://github.com/
 [credential]
 	helper = netrc
+[pull]
+	ff = only

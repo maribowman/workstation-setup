@@ -11,7 +11,7 @@ else
   {
     echo -e "\n# export go system settings"
     echo "export GOROOT=/usr/local/go"
-    echo "export GOPATH=\$HOME/Dev/go"
+    echo "export GOPATH=\$HOME/go"
     echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin"
     echo "export GOPRIVATE=github.com/fomo-labs"
   } >>/etc/profile

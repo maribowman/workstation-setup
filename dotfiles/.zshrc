@@ -1,7 +1,10 @@
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:/usr/local/bin:$PATH
-
 export ZSH="$HOME/.oh-my-zsh"
+
+# export go system settings
+export GOROOT=/usr/local/go
+export GOPATH=$HOME/go/bin
+export PATH=$PATH:$GOPATH/bin
+export GOPRIVATE=github.com/fomo-labs
 
 ZSH_THEME="robbyrussell"
 
@@ -13,15 +16,8 @@ COMPLETION_WAITING_DOTS="true"
 
 plugins=(git docker docker-compose kubectl helm golang sudo)
 
-# User configuration
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
 # users are encouraged to define aliases within the ZSH_CUSTOM folder.
 # For a full list of active aliases, run `alias`.
-
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Enable me
 source $ZSH/oh-my-zsh.sh

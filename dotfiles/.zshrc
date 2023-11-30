@@ -2,8 +2,8 @@ export ZSH="$HOME/.oh-my-zsh"
 
 # export go system settings
 export GOROOT=/usr/local/go
-export GOPATH=$HOME/go/bin
-export PATH=$PATH:$GOPATH/bin
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
 export GOPRIVATE=github.com/fomo-labs
 
 ZSH_THEME="robbyrussell"
@@ -11,7 +11,6 @@ ZSH_THEME="robbyrussell"
 zstyle 'omz:update' mode auto    # update automatically w/o asking
 zstyle 'omz:update' frequency 3  # auto-update (in days)
 
-ENABLE_CORRECTION="true"
 COMPLETION_WAITING_DOTS="true"
 
 plugins=(git docker docker-compose kubectl helm golang sudo)

@@ -4,11 +4,11 @@ for file in cron/*.sh; do
   cp -a "$file" /etc/cron.d/
   chmod +x /etc/cron.d/"$(basename -- "$file")"
 
-  crontab -l >new_crontab
-  echo "@reboot $file" >>new_crontab
-  crontab crontab_new
+  crontab -l >>new_crontab
+  echo "@reboot /etc/cron.d/$(basename -- "$file")" >>new_crontab
+  crontab new_crontab
 
-  rm crontab_new
+  rm new_crontab
 done
 
 # run weekly database backups

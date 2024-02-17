@@ -26,6 +26,6 @@ while IFS= read -r line; do
 done <update_copy.log
 rm update_copy.log
 
-sudo apt autoremove | tee -a update.log && sudo apt autoclean | tee -a update.log
+sudo apt autoremove -y | tee -a update.log && sudo apt autoclean | tee -a update.log
 
 sudo snap refresh | tee -a update.log

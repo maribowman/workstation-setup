@@ -1,14 +1,19 @@
 #!/bin/bash
 
-VERSION="2.7.3.1381"
-FILENAME="resilio-sync_$VERSION-1_amd64.deb"
+# -> https://help.resilio.com/hc/en-us/articles/206178924-Installing-Sync-package-on-Linux
+
+VERSION="2.7.3.1381-1"
+FILENAME="resilio-sync_${VERSION}_amd64.deb"
 URL="https://download-cdn.resilio.com/$VERSION/Debian/$FILENAME"
 DOWNLOADS="$HOME/Downloads/"
 
-(cd "$DOWNLOADS" && curl -OL $URL) && sudo dpkg -i "$DOWNLOADS/resilio-sync_2.7.3.1381-1_amd64.deb"
+(cd "$DOWNLOADS" && curl -OL $URL) && sudo dpkg -i "$DOWNLOADS/$FILENAME"
 
-sudo systemctl enable resilio-sync
+# run sync under current user
+systemctl --user enable resilio-sync
 
-sudo usermod -aG "$(id -gn)" rslsync
-sudo usermod -aG rslsync "$USER"
-sudo chmod g+rw "$HOME/Sync"
+# default sync service settings
+# sudo systemctl enable resilio-sync
+# sudo usermod -aG "$(id -gn)" rslsync
+# sudo usermod -aG rslsync "$USER"
+# sudo chmod g+rw "$HOME/Sync"

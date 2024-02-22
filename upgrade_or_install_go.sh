@@ -5,17 +5,18 @@ URL="https://go.dev/dl/$FILENAME"
 DOWNLOADS="$HOME/Downloads/"
 
 if [ -d "/usr/local/go" ]; then
-  ## remove old go installation
+  # remove old go installation if exists
   sudo rm -rf /usr/local/go
 else
-  {
-    echo -e "\n# export go system settings"
-    echo "export GOROOT=/usr/local/go"
-    echo "export GOPATH=\$HOME/go"
-    echo "export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin"
-    echo "export GOPRIVATE=github.com/fomo-labs"
-  } >>/etc/profile
+  # append go system settings to profile
+  cat <<EOF >> /etc/profile
+  
+  # export go system settings
+  export GOROOT=/usr/local/go
+  export GOPATH=\$HOME/go
+  export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin
+  export GOPRIVATE=github.com/fomo-labs
+  EOF
 fi
 
-# download and install new version
-(cd "$DOWNLOADS" && curl -OL $URL) && sudo tar -C /usr/local -xzf "$DOWNLOADS$FILENAME"
+(cd "$DOWNLOADS" && curl -OL $URL) && sudo tar -C /usr/local -xzf "$DOWNLOADS/$FILENAME"

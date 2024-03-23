@@ -9,13 +9,16 @@
 - [go](https://go.dev/)
 - [snap](https://snapcraft.io/)
     - goland
-    - helm
+    - pycharm
     - kubectl
+    - helm
+    - obsidian
     - httpie
+    - k9s
     - keepassxc
-    - notion
     - discord
     - teams
+    - tradingview
     - zoom
 - azure cli
 - [resilio-sync](https://www.resilio.com/)

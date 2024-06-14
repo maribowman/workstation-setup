@@ -29,3 +29,5 @@ rm update_copy.log
 sudo apt autoremove -y | tee -a update.log && sudo apt autoclean | tee -a update.log
 
 sudo snap refresh | tee -a update.log
+
+notify-send "Finished all software updates"

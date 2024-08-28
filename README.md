@@ -1,5 +1,9 @@
 # workstation-setup
 
+## enable passwordless sudo
+- `sudo vim /etc/sudoers`
+- add `${username} ALL=(ALL) NOPASSWD: ALL` below the line `includedir /etc/sudoers.d`
+
 ## install software
 - [git](https://git-scm.com/downloads) (manual installation)
     - `.gitconfig`

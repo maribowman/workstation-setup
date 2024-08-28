@@ -1,0 +1,43 @@
+- name: Install system packages via apt
+  hosts: localhost
+  become: true
+  tasks:
+    - name: Update cache and upgrade
+      apt:
+        update_cache: true
+        upgrade: true
+
+    - name: Clean package repository and remove unused packages
+      apt:
+        autoclean: true
+        autoremove: true
+
+    - name: Update all packages
+      apt:
+        name: "*"
+        update_cache: true
+        state: latest
+
+    - name: Install system packages
+      apt:
+        pkg:
+          - cifs-utils
+          - curl
+          - git
+          - git-core
+          - kdiff3
+          - snapd
+          - vim
+          - zsh
+        state: latest
+        update_cache: true
+
+    - name: Install docker packages
+      apt:
+        pkg:
+          - lsb-release
+          - apt-transport-https
+          - ca-certificates
+          - software-properties-common
+        state: latest
+        update_cache: true

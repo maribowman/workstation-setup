@@ -2,5 +2,5 @@
 
 sudo apt update && sudo apt upgrade -y
 
-# essentials (assuming git is installed to clone this repo)
-sudo apt install -y git-core curl kdiff3 vim zsh snapd cifs-utils
+# essentials
+sudo apt install -y git git-core cifs-utils curl kdiff3 luarocks snapd vim zsh

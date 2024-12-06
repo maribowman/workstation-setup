@@ -1,6 +1,6 @@
 #!/bin/bash
 
-FILENAME="go1.19.linux-amd64.tar.gz"
+FILENAME="go1.23.4.linux-amd64.tar.gz"
 URL="https://go.dev/dl/$FILENAME"
 DOWNLOADS="$HOME/Downloads/"
 
@@ -19,4 +19,6 @@ else
   EOF
 fi
 
-(cd "$DOWNLOADS" && curl -OL $URL) && sudo tar -C /usr/local -xzf "$DOWNLOADS/$FILENAME"
+(cd "$DOWNLOADS" && curl -OL $URL)
+sudo tar -C /usr/local -xzf "$DOWNLOADS/$FILENAME"
+rm "$DOWNLOADS/$FILENAME"

@@ -7,7 +7,10 @@ zstyle 'omz:update' frequency 3  # Auto-update (in days)
 
 COMPLETION_WAITING_DOTS="true"
 
-plugins=(git docker docker-compose kubectl helm golang sudo)
+plugins=(ansible docker docker-compose git golang helm kubectl pip poetry python sudo terraform ubuntu)
+
+alias z=zellij
+alias k=kubectl
 
 # Enable it
 source $ZSH/oh-my-zsh.sh

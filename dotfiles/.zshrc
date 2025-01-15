@@ -11,6 +11,7 @@ plugins=(ansible docker docker-compose git golang helm kubectl pip poetry python
 
 alias z=zellij
 alias k=kubectl
+alias clip="xclip -selection c"
 
 # Enable it
 source $ZSH/oh-my-zsh.sh

@@ -15,7 +15,7 @@
 	defaultBranch = main
 [url "ssh://git@github.com/"]
 	insteadOf = https://github.com/
-[credential]
-	helper = netrc
 [pull]
 	ff = only
+[alias]
+	yolo = !git commit -m \"$(curl -s https://whatthecommit.com/index.txt)\"

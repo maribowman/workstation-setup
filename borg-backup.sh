@@ -4,10 +4,10 @@
 # borg init --encryption=none $PATH
 # borg info --remote-path=/usr/local/bin/borg $USER@$HOST:$PATH
 
-USER="mari"
+USERNAME="mari"
 HOST="192.168.0.3"
-PATH="/volume1/backups/ubuntu_backup_home/borg"
-REPO="$USER@$HOST:$PATH"
+REMOTE_PATH="/volume1/backups/ubuntu_backup_home/borg"
+REPO="$USER@$HOST:$REMOTE_PATH"
 
 BORG_PASSPHRASE=""
 BORG_RSH="ssh"
@@ -22,11 +22,11 @@ EXCLUDE_LIST=(
 export BORG_PASSPHRASE="$BORG_PASSPHRASE"
 
 echo "Starting backup of $BACKUP_SOURCE to $REPO"
-/usr/bin/borg create --remote-path=/usr/local/bin/borg --verbose --stats --compression lz4 --exclude-from <(printf '%s\n' "${EXCLUDE_LIST[@]}") "$REPO::$ARCHIVE_NAME" "$BACKUP_SOURCE"
-/usr/bin/borg prune --remote-path=/usr/local/bin/borg --list --keep-daily=5 --keep-monthly=3 --keep-yearly=1 "$REPO"
+borg create --remote-path=/usr/local/bin/borg --verbose --stats --compression lz4 --exclude-from <(printf '%s\n' "${EXCLUDE_LIST[@]}") "$REPO::$ARCHIVE_NAME" "$BACKUP_SOURCE"
+borg prune --remote-path=/usr/local/bin/borg --list --keep-daily=5 --keep-monthly=3 --keep-yearly=1 "$REPO"
 
 echo "Backup completed! Checking repository consistency"
-/usr/bin/borg check --remote-path=/usr/local/bin/borg --verify-data "$REPO"
+borg check --remote-path=/usr/local/bin/borg --verify-data "$REPO"
 
 exit 0
 

@@ -4,6 +4,7 @@
 - `sudo vim /etc/sudoers`
 - add `${username} ALL=(ALL) NOPASSWD: ALL` below the line `includedir /etc/sudoers.d`
 
+
 ## install software
 - [git](https://git-scm.com/downloads) (manual installation)
     - `.gitconfig`
@@ -21,14 +22,14 @@
     - k9s
     - keepassxc
     - discord
-    - teams
     - tradingview
     - zoom
-- azure cli
 - [resilio-sync](https://www.resilio.com/)
+
 
 ## register cron jobs
 - `@reboot cron/update.sh` 
+
 
 ## neovim
 ### install [nerd font](https://www.nerdfonts.com/font-downloads)
@@ -39,3 +40,15 @@ wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/do
 && rm JetBrainsMono.zip \
 && fc-cache -fv
 ```
+
+## gnome
+### load extensions settings
+```bash
+dconf load /org/gnome/shell/extensions/ < gnome-extensions.toml
+```
+
+### dump extensions settings
+```bash
+dconf dump /org/gnome/shell/extensions/ > gnome-extensions.toml
+```
+

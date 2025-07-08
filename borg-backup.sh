@@ -25,7 +25,7 @@ echo "Starting backup of $BACKUP_SOURCE to $REPO"
 borg create --remote-path=/usr/local/bin/borg --verbose --stats --compression lz4 --exclude-from <(printf '%s\n' "${EXCLUDE_LIST[@]}") "$REPO::$ARCHIVE_NAME" "$BACKUP_SOURCE"
 borg prune --remote-path=/usr/local/bin/borg --list --keep-daily=5 --keep-monthly=3 --keep-yearly=1 "$REPO"
 
-echo "Backup completed! Checking repository consistency"
+echo "\nBackup completed! Checking repository consistency"
 borg check --remote-path=/usr/local/bin/borg --verify-data "$REPO"
 
 exit 0

@@ -29,6 +29,7 @@
           - git-core
           - kdiff3
           - snapd
+          - tree
           - vim
           - zsh
         state: latest

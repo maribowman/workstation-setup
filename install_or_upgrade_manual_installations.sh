@@ -13,7 +13,7 @@ hurl_version=$(curl -s https://api.github.com/repos/Orange-OpenSource/hurl/relea
 curl --location --remote-name "https://github.com/Orange-OpenSource/hurl/releases/download/$hurl_version/hurl_${hurl_version}_amd64.deb"
 
 # Install
-sudo apt install ./*.deb
+sudo apt-get install ./*.deb
 
 # Clean-up
 rm -rf "$install_dir"

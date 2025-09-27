@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # -> https://go.dev/VERSION?m=text
-FILENAME="go1.23.4.linux-amd64.tar.gz"
+FILENAME="go1.25.1.linux-amd64.tar.gz"
 URL="https://go.dev/dl/$FILENAME"
 DOWNLOADS="$HOME/Downloads/"
 

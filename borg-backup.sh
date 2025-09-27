@@ -14,9 +14,10 @@ BORG_RSH="ssh"
 BACKUP_SOURCE="/home/$USER/"
 ARCHIVE_NAME="{hostname}-{now:%Y%m%d_%H%M}"
 EXCLUDE_LIST=(
-    "$HOME/.cache"
-    "$HOME/.thumbnails"
-    "$HOME/.local/share/Trash"
+  "$HOME/Desktop"
+  "$HOME/.cache"
+  "$HOME/.thumbnails"
+  "$HOME/.local/share/Trash"
 )
 
 export BORG_PASSPHRASE="$BORG_PASSPHRASE"
@@ -29,4 +30,3 @@ echo "\nBackup completed! Checking repository consistency"
 borg check --remote-path=/usr/local/bin/borg --verify-data "$REPO"
 
 exit 0
-

@@ -1,0 +1,4 @@
+com.bambulab.BambuStudio
+com.protonvpn.www
+com.usebottles.bottles
+me.proton.Pass

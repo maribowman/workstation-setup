@@ -1,0 +1,39 @@
+version: "3"
+
+vars:
+  INSTALL_DIR: "{{.HOME}}/.local/share/workstation-setup"
+
+tasks:
+  update:
+    desc: Full system update (packages + dotfiles)
+    cmds:
+      - task: update-packages
+      - task: update-dotfiles
+
+  update-packages:
+    desc: Update pacman, AUR, and Flatpak packages
+    cmds:
+      - sudo pacman -Syu --noconfirm
+      - paru -Syu --noconfirm
+      - flatpak update -y
+
+  update-dotfiles:
+    desc: Pull latest dotfiles and restow all packages
+    cmds:
+      - git -C "{{.INSTALL_DIR}}" submodule update --remote --merge dotfiles
+      - cmd: cd "{{.INSTALL_DIR}}/dotfiles" && ls -d */ | xargs stow -t "{{.HOME}}"
+
+  backup:
+    desc: Run restic backup to Synology NAS
+    cmds:
+      - bash "{{.INSTALL_DIR}}/scripts/restic_backup.sh"
+
+  backup-init:
+    desc: Initialise restic repository on NAS (run once)
+    cmds:
+      - restic -r sftp:mari@192.168.0.3:/volume1/backups/workstation/restic init
+
+  install:
+    desc: Run full installation (re-entrant)
+    cmds:
+      - bash "{{.INSTALL_DIR}}/install/install.sh"

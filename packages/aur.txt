@@ -1,0 +1,6 @@
+brave-bin
+hurl
+ledger-live-bin
+rslsync
+tradingview
+vesktop-bin

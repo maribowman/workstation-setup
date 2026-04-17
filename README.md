@@ -10,15 +10,16 @@ This clones the repo to `~/Dev/workstation-setup`, initialises the dotfiles subm
 
 ## What gets installed
 
-| Category | Tools |
-|---|---|
-| Shell | zsh |
-| Editor | neovim |
-| Terminal | alacritty, zellij, tmux |
-| Dev | go, uv (Python), docker, lazygit, kubectl, helm, k9s, hurl, distrobox |
-| Utilities | ripgrep, fd, fzf, stow, jq, luarocks |
-| Apps | brave, keepassxc, vlc, vesktop, tradingview, ledger live, resilio-sync, bambu studio, protonvpn, proton pass, bottles |
-| Backup | restic (NAS), snapper (local BTRFS snapshots) |
+| Category   | Tools                                                                                                                 |
+| ---------- | --------------------------------------------------------------------------------------------------------------------- |
+| Shell      | zsh                                                                                                                   |
+| Editor     | neovim                                                                                                                |
+| Terminal   | alacritty, atuin, bat, ghostty, tmux, yazi, zellij                                                                    |
+| Dev        | go, uv , docker, lazygit, kubectl, helm, k9s, hurl, distrobox                                                         |
+| Utilities  | ripgrep, fd, fzf, stow, jq, yq, luarocks                                                                              |
+| Evaluation | eza, glow, zoxide                                                                                                     |
+| Apps       | brave, keepassxc, vlc, vesktop, tradingview, ledger live, resilio-sync, bambu studio, protonvpn, proton pass, bottles |
+| Backup     | restic (NAS), snapper (local BTRFS snapshots)                                                                         |
 
 ## Daily maintenance
 

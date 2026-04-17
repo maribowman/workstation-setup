@@ -1,5 +1,7 @@
 alacritty
+atuin
 base-devel
+bat
 cifs-utils
 curl
 distrobox
@@ -8,6 +10,7 @@ docker-compose
 fd
 flatpak
 fzf
+ghostty
 git
 go
 helm
@@ -28,5 +31,12 @@ tree
 uv
 vlc
 wget
+yazi
+yq
 zellij
 zsh
+
+# --- new tools: evaluate and remove if unwanted ---
+eza          # ls replacement with git status and Nerd Font icons
+glow         # markdown reader in the terminal
+zoxide       # frecency-based cd replacement; pairs with fzf

@@ -6,7 +6,7 @@ CachyOS workstation bootstrap. Run on a fresh install:
 curl -fsSL https://raw.githubusercontent.com/maribowman/workstation-setup/main/install/boot.sh | bash
 ```
 
-This clones the repo to `~/.local/share/workstation-setup`, initialises the dotfiles submodule, and runs the full installer.
+This clones the repo to `~/Dev/workstation-setup`, initialises the dotfiles submodule, and runs the full installer.
 
 ## What gets installed
 

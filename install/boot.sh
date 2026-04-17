@@ -2,10 +2,12 @@
 set -eEo pipefail
 
 REPO="https://github.com/maribowman/workstation-setup"
-INSTALL_DIR="$HOME/.local/share/workstation-setup"
+INSTALL_DIR="$HOME/Dev/workstation-setup"
 
 echo "==> Installing git..."
 sudo pacman -S --noconfirm --needed git
+
+mkdir -p "$HOME/Dev"
 
 if [ -d "$INSTALL_DIR" ]; then
   echo "==> Updating existing installation..."

@@ -4,7 +4,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## Overview
 
-CachyOS (Arch-based) workstation bootstrap. A `curl | bash` script clones this repo to `~/.local/share/workstation-setup`, initialises a private dotfiles git submodule, and runs the full installer. The Taskfile is the daily maintenance driver.
+CachyOS (Arch-based) workstation bootstrap. A `curl | bash` script clones this repo to `~/Dev/workstation-setup`, initialises a private dotfiles git submodule, and runs the full installer. The Taskfile is the daily maintenance driver.
 
 ## Structure
 

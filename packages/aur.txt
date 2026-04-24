@@ -1,5 +1,6 @@
 brave-bin
 hurl
+infisical
 ledger-live-bin
 rslsync
 tradingview

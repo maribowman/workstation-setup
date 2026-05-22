@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # -> https://go.dev/VERSION?m=text
-FILENAME="go1.25.1.linux-amd64.tar.gz"
+FILENAME="go1.26.3.linux-amd64.tar.gz"
 URL="https://go.dev/dl/$FILENAME"
 DOWNLOADS="$HOME/Downloads/"
 
@@ -17,7 +17,7 @@ else
   export GOPATH=\$HOME/go
   export PATH=\$PATH:\$GOROOT/bin:\$GOPATH/bin
   export GOPRIVATE=github.com/fomo-labs
-  EOF
+EOF
 fi
 
 (cd "$DOWNLOADS" && curl -OL $URL)

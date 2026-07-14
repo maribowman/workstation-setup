@@ -1,5 +1,6 @@
 brave-bin
 hurl
+hunk-bin
 infisical
 ledger-live-bin
 rslsync

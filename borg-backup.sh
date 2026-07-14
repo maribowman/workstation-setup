@@ -5,7 +5,7 @@
 # borg info --remote-path=/usr/local/bin/borg $USER@$HOST:$PATH
 
 USERNAME="mari"
-HOST="192.168.0.3"
+HOST="10.0.40.10"
 REMOTE_PATH="/volume1/backups/ubuntu_backup_home/borg"
 REPO="$USER@$HOST:$REMOTE_PATH"
 

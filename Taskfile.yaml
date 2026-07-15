@@ -31,7 +31,7 @@ tasks:
   backup-init:
     desc: Initialise restic repository on NAS (run once)
     cmds:
-      - restic -r sftp:mari@192.168.0.3:/volume1/backups/workstation/restic init
+      - restic -r sftp:mari@10.0.40.10:/volume1/backups/workstation/restic init
 
   install:
     desc: Run full installation (re-entrant)

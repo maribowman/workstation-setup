@@ -23,6 +23,7 @@ luarocks
 neovim
 restic
 ripgrep
+snap-pac
 snapper
 stow
 task

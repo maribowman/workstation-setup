@@ -40,10 +40,8 @@ log "Enabling Resilio Sync..."
 systemctl --user enable --now rslsync
 
 # ── 7. Snapper (BTRFS snapshots) ─────────────────────────────────────────────
-log "Configuring Snapper for root subvolume..."
-if ! snapper list-configs | grep -q '^root'; then
-  sudo snapper -c root create-config /
-fi
+log "Configuring Snapper..."
+bash "$INSTALL_DIR/scripts/snapper.sh"
 
 # ── 8. Dotfiles via stow ─────────────────────────────────────────────────────
 log "Applying dotfiles..."
@@ -62,6 +60,6 @@ log ""
 log "Next steps:"
 log "  1. Re-login (or reboot) for group changes to take effect"
 log "  2. Initialise restic backup repo (first time only):"
-log "       restic -r sftp:mari@192.168.0.3:/volume1/backups/workstation/restic init"
+log "       restic -r sftp:mari@10.0.40.10:/volume1/backups/workstation/restic init"
 log "  3. Run a backup:  task backup"
 log "  4. Update system: task update"

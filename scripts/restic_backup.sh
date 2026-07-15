@@ -1,7 +1,7 @@
 #!/bin/bash
 set -eEo pipefail
 
-REPO="sftp:mari@192.168.0.3:/volume1/backups/workstation/restic"
+REPO="sftp:mari@10.0.40.10:/volume1/backups/workstation/restic"
 BACKUP_SOURCE="$HOME"
 EXCLUDE_LIST=(
   "$HOME/.cache"

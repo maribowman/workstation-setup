@@ -15,7 +15,8 @@ CachyOS (Arch-based) workstation bootstrap. A `curl | bash` script clones this r
 - **`packages/flatpak.txt`** — Flatpak app IDs
 - **`scripts/paru.sh`** — bootstraps the paru AUR helper from source
 - **`scripts/docker.sh`** — enables Docker service, adds user to docker group
-- **`scripts/restic_backup.sh`** — backs up `$HOME` to Synology NAS (`192.168.0.3`) via SFTP; daily/monthly/yearly retention
+- **`scripts/snapper.sh`** — configures snapper root config: pre/post pacman snapshots via snap-pac, ~15 snapshot cap, no timeline
+- **`scripts/restic_backup.sh`** — backs up `$HOME` to Synology NAS (`10.0.40.10`) via SFTP; daily/monthly/yearly retention
 - **`dotfiles/`** — git submodule (`git@github.com:maribowman/dotfiles`); every top-level directory is a stow package, all are stowed automatically
 
 ## Common commands
@@ -52,7 +53,7 @@ All top-level directories in the submodule are discovered and stowed automatical
 
 ## Key details
 
-- NAS IP is hardcoded as `192.168.0.3` in `scripts/restic_backup.sh`
+- NAS IP is hardcoded as `10.0.40.10` in `scripts/restic_backup.sh`
 - `task backup-init` must be run once to initialise the restic repo before first backup
-- Snapper is configured for the root BTRFS subvolume during install
+- Snapper is configured for the root BTRFS subvolume during install; retention is bounded (NUMBER_LIMIT=15, NUMBER_LIMIT_IMPORTANT=5, timeline disabled) — snap-pac provides pre/post pacman snapshots, restic covers long-term history
 - Go and uv are installed via pacman (`extra` repo) — no manual version pinning

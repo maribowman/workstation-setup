@@ -14,7 +14,7 @@ This clones the repo to `~/Dev/workstation-setup`, initialises the dotfiles subm
 | ---------- | --------------------------------------------------------------------------------------------------------------------- |
 | Shell      | zsh                                                                                                                   |
 | Editor     | neovim                                                                                                                |
-| Terminal   | alacritty, atuin, bat, ghostty, tmux, yazi, zellij                                                                    |
+| Terminal   | atuin, bat, ghostty, herdr, yazi                                                                                      |
 | Dev        | go, uv , docker, lazygit, kubectl, helm, k9s, hurl, distrobox                                                         |
 | Utilities  | ripgrep, fd, fzf, stow, jq, yq, luarocks                                                                              |
 | Evaluation | eza, glow, zoxide                                                                                                     |
@@ -44,10 +44,10 @@ Dotfiles live in a private git submodule at `dotfiles/` and are managed with GNU
 
 ```
 dotfiles/
-├── alacritty/.config/alacritty/
+├── ghostty/.config/ghostty/
 ├── git/.gitconfig
+├── herdr/.config/herdr/
 ├── k9s/.config/k9s/
-├── zellij/.config/zellij/
 └── zsh/.zshrc
 ```
 

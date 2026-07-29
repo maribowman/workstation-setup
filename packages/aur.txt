@@ -1,4 +1,5 @@
 brave-bin
+herdr-bin
 hurl
 hunk-bin
 infisical

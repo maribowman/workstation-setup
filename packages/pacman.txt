@@ -1,4 +1,3 @@
-alacritty
 atuin
 base-devel
 bat
@@ -27,14 +26,12 @@ snap-pac
 snapper
 stow
 task
-tmux
 tree
 uv
 vlc
 wget
 yazi
 yq
-zellij
 zsh
 
 # --- new tools: evaluate and remove if unwanted ---

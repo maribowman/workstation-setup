@@ -51,6 +51,17 @@ git submodule add git@github.com:maribowman/dotfiles dotfiles
 
 All top-level directories in the submodule are discovered and stowed automatically — no hardcoded list.
 
+**Never modify anything under `dotfiles/`.** It is a separate repository
+(`git@github.com:maribowman/dotfiles`) and its owner is the only writer. When a task requires a
+dotfiles change, print the target file path and the exact diff, then stop — do not write the
+file, and do not run `git add`, `git commit` or `git push` inside `dotfiles/`.
+
+Why: `git submodule update` hard-resets `dotfiles/` to the pinned commit and detaches HEAD,
+silently discarding uncommitted work there. This has destroyed the same change twice.
+
+The parent-side pointer bump (`git add dotfiles` plus a `bump dotfiles: ...` commit) is the
+owner's to run as well — never stage a submodule pointer change on their behalf.
+
 ## Key details
 
 - NAS IP is hardcoded as `10.0.40.10` in `scripts/restic_backup.sh`

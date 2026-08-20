@@ -57,3 +57,4 @@ All top-level directories in the submodule are discovered and stowed automatical
 - `task backup-init` must be run once to initialise the restic repo before first backup
 - Snapper is configured for the root BTRFS subvolume during install; retention is bounded (NUMBER_LIMIT=15, NUMBER_LIMIT_IMPORTANT=5, timeline disabled) — snap-pac provides pre/post pacman snapshots, restic covers long-term history
 - Go and uv are installed via pacman (`extra` repo) — no manual version pinning
+- Proton Pass CLI comes from the AUR (`proton-pass-cli-bin`, Proton's official prebuilt binary) so `paru -Syu` keeps it current. Its zsh completions use `pass-cli completions zsh` — a hidden clap subcommand that is absent from Proton's docs and from `--help`, but present and stable. `PROTON_PASS_NO_UPDATE_CHECK=1` in `dotfiles/zsh/.zshrc` disables its built-in self-updater, which would otherwise try to rewrite the pacman-owned `/usr/bin/pass-cli`

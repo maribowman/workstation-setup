@@ -4,6 +4,7 @@ hurl
 hunk-bin
 infisical
 ledger-live-bin
+proton-pass-cli-bin
 rslsync
 tradingview
 vesktop-bin

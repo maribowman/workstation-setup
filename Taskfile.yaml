@@ -5,15 +5,16 @@ vars:
 
 tasks:
   update:
-    desc: Full system update (packages + dotfiles)
+    desc: Full system update (packages + dotfiles + migrations)
     cmds:
       - task: update-packages
       - task: update-dotfiles
+      - task: migrate
 
   update-packages:
-    desc: Update pacman, AUR, and Flatpak packages
+    desc: Update repo, AUR and Flatpak packages
     cmds:
-      - sudo pacman -Syu --noconfirm
+      # paru -Syu upgrades the official repos as well as the AUR
       - paru -Syu --noconfirm
       - flatpak update -y
 
@@ -21,7 +22,27 @@ tasks:
     desc: Pull latest dotfiles and restow all packages
     cmds:
       - git -C "{{.INSTALL_DIR}}" submodule update --remote --merge dotfiles
-      - cmd: cd "{{.INSTALL_DIR}}/dotfiles" && ls -d */ | xargs stow -t "{{.HOME}}"
+      - bash "{{.INSTALL_DIR}}/scripts/stow.sh"
+      - cmd: |
+          if ! git -C "{{.INSTALL_DIR}}" diff --quiet --ignore-submodules=dirty -- dotfiles; then
+            sha=$(git -C "{{.INSTALL_DIR}}/dotfiles" rev-parse --short HEAD)
+            echo "==> dotfiles moved to $sha — commit the pointer: git add dotfiles && git commit -m 'bump dotfiles: ...'"
+          fi
+
+  migrate:
+    desc: Run pending one-off migrations (migrations/*.sh)
+    cmds:
+      - bash "{{.INSTALL_DIR}}/scripts/migrate.sh"
+
+  drift:
+    desc: Compare explicitly installed packages against packages/*.txt
+    cmds:
+      - bash "{{.INSTALL_DIR}}/scripts/drift.sh"
+
+  lint:
+    desc: shellcheck all scripts and verify every package in the lists exists
+    cmds:
+      - bash "{{.INSTALL_DIR}}/scripts/lint.sh"
 
   backup:
     desc: Run restic backup to Synology NAS
@@ -31,7 +52,12 @@ tasks:
   backup-init:
     desc: Initialise restic repository on NAS (run once)
     cmds:
-      - restic -r sftp:mari@10.0.40.10:/volume1/backups/workstation/restic init
+      - bash "{{.INSTALL_DIR}}/scripts/restic_backup.sh" init
+
+  snapshots:
+    desc: List restic snapshots on the NAS
+    cmds:
+      - bash "{{.INSTALL_DIR}}/scripts/restic_backup.sh" snapshots
 
   install:
     desc: Run full installation (re-entrant)

@@ -20,8 +20,10 @@ kubectl
 lazygit
 luarocks
 neovim
+paru
 restic
 ripgrep
+shellcheck
 snap-pac
 snapper
 stow
@@ -30,6 +32,7 @@ tree
 uv
 vlc
 wget
+wl-clipboard
 yazi
 yq
 zsh

@@ -1,32 +1,54 @@
 #!/bin/bash
+# Restic backup of $HOME to the Synology NAS.
+#   restic_backup.sh          backup + prune + check
+#   restic_backup.sh init     initialise the repository (once)
+#   restic_backup.sh <args>   any other restic command against the repo, e.g. snapshots
 set -eEo pipefail
 
-REPO="sftp:mari@10.0.40.10:/volume1/backups/workstation/restic"
-BACKUP_SOURCE="$HOME"
-EXCLUDE_LIST=(
-  "$HOME/.cache"
-  "$HOME/.thumbnails"
-  "$HOME/.local/share/Trash"
-  "$HOME/Desktop"
-)
+NAS_HOST="10.0.40.10"
+export RESTIC_REPOSITORY="sftp:mari@$NAS_HOST:/volume1/backups/workstation/restic"
+export RESTIC_PASSWORD_FILE="${RESTIC_PASSWORD_FILE:-$HOME/.config/restic/password}"
 
-# Build --exclude flags
-EXCLUDE_FLAGS=()
-for path in "${EXCLUDE_LIST[@]}"; do
-  EXCLUDE_FLAGS+=(--exclude "$path")
-done
+# Separate NAS key exported by scripts/secrets.sh, if there is one.
+SFTP_OPTS=()
+if [ -f "$HOME/.ssh/id_nas" ]; then
+  SFTP_OPTS=(-o "sftp.args=-i $HOME/.ssh/id_nas")
+fi
 
-echo "==> Starting backup of $BACKUP_SOURCE to $REPO"
-restic -r "$REPO" backup "${EXCLUDE_FLAGS[@]}" "$BACKUP_SOURCE"
+if [ ! -f "$RESTIC_PASSWORD_FILE" ]; then
+  echo "!!  $RESTIC_PASSWORD_FILE missing — run scripts/secrets.sh first" >&2
+  exit 1
+fi
 
-echo "==> Pruning old snapshots..."
-restic -r "$REPO" forget \
-  --keep-daily 5 \
-  --keep-monthly 3 \
-  --keep-yearly 1 \
-  --prune
+case "${1:-backup}" in
+backup)
+  EXCLUDE_LIST=(
+    "$HOME/.cache"
+    "$HOME/.thumbnails"
+    "$HOME/.local/share/Trash"
+    "$HOME/Desktop"
+  )
+  EXCLUDE_FLAGS=()
+  for path in "${EXCLUDE_LIST[@]}"; do
+    EXCLUDE_FLAGS+=(--exclude "$path")
+  done
 
-echo "==> Verifying repository integrity..."
-restic -r "$REPO" check
+  echo "==> Starting backup of $HOME to $RESTIC_REPOSITORY"
+  restic "${SFTP_OPTS[@]}" backup "${EXCLUDE_FLAGS[@]}" "$HOME"
 
-echo "==> Backup complete"
+  echo "==> Pruning old snapshots..."
+  restic "${SFTP_OPTS[@]}" forget \
+    --keep-daily 5 \
+    --keep-monthly 3 \
+    --keep-yearly 1 \
+    --prune
+
+  echo "==> Verifying repository integrity..."
+  restic "${SFTP_OPTS[@]}" check
+
+  echo "==> Backup complete"
+  ;;
+*)
+  restic "${SFTP_OPTS[@]}" "$@"
+  ;;
+esac

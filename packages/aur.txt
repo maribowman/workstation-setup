@@ -3,8 +3,11 @@ herdr-bin
 hurl
 hunk-bin
 infisical
+kubelogin-bin
 ledger-live-bin
+nono-ai-bin
 proton-pass-cli-bin
 rslsync
+sofka
 tradingview
 vesktop-bin

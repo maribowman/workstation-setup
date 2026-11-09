@@ -28,7 +28,7 @@ The installer is re-entrant (`task install` re-runs it) and pauses once for secr
 | Shell      | zsh                                                                                                                   |
 | Editor     | neovim                                                                                                                |
 | Terminal   | atuin, bat, ghostty, herdr, yazi                                                                                      |
-| Dev        | go, uv , docker, lazygit, kubectl, helm, k9s, hurl, distrobox, pass-cli                                               |
+| Dev        | go, uv , docker, lazygit, kubectl, krew, kubelogin, helm, k9s, sofka, hurl, distrobox, pass-cli, nono                 |
 | Utilities  | ripgrep, fd, fzf, stow, jq, yq, luarocks                                                                              |
 | Evaluation | eza, glow, zoxide                                                                                                     |
 | Apps       | brave, keepassxc, vlc, vesktop, tradingview, ledger live, resilio-sync, bambu studio, protonvpn, proton pass, bottles |

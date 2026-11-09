@@ -16,6 +16,7 @@ helm
 jq
 k9s
 keepassxc
+krew
 kubectl
 lazygit
 luarocks
